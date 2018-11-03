@@ -10,7 +10,7 @@ CORS(app)
 
 app_settings = os.getenv(
     'APP_SETTINGS',
-    'config.DevelopmentConfig'
+    'project.config.DevelopmentConfig'
 )
 app.config.from_object(app_settings)
 

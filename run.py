@@ -5,7 +5,6 @@ from project import app, db, models
 migrate = Migrate(app, db)
 manager = Manager(app)
 
-# migrations
 manager.add_command('db', MigrateCommand)
 
 
