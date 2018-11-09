@@ -1,0 +1,17 @@
+version: '3'
+
+volumes:
+  web:
+  database:
+
+services:
+  database:
+    restart: always
+    image: postgres:latest
+    volumes:
+    - database:/var/lib/postgresql
+    ports:
+    - 5432:5432
+    environment:
+      POSTGRES_USER: lupusanay
+      POSTGRES_PASSWORD: pass123

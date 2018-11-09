@@ -1,8 +1,15 @@
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-database_url = 'oracle+cx_oracle://system:oracle@localhost:49161/'
-database_name = 'parking_database'
+POSTGRES = {
+    'user': 'lupusanay',
+    'pw': 'pass123',
+    'db': 'parking',
+    'host': 'localhost',
+    'port': '5432',
+}
+host = '0.0.0.0'
+port = 8080
 
 
 class BaseConfig:
@@ -12,9 +19,9 @@ class BaseConfig:
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = database_url + database_name
+    SQLALCHEMY_DATABASE_URI = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
 
 
 class ProductionConfig(BaseConfig):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = database_url + database_name
+    SQLALCHEMY_DATABASE_URI = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
