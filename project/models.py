@@ -1,5 +1,6 @@
 from project import db
 import datetime
+from flask import jsonify
 
 
 class Customer(db.Model):
@@ -19,6 +20,20 @@ class Customer(db.Model):
         self.second_name = second_name
         self.address = address
         self.phone = phone
+
+    def __repr__(self):
+        return {'car_id': self.car_id,
+                'first_name': self.first_name,
+                'second_name': self.second_name,
+                'address': self.address,
+                'phone': self.phone}
+
+    def as_dict(self):
+        return {'car_id': self.car_id,
+                'first_name': self.first_name,
+                'second_name': self.second_name,
+                'address': self.address,
+                'phone': self.phone}
 
 
 class Order(db.Model):
@@ -48,7 +63,8 @@ class Order(db.Model):
         self.car_id = car_id
 
     def __repr__(self):
-        return 'car_id: {}, date: {}'.format(self.car_id, self.date)
+        return jsonify({'date': self.date,
+                        'car_id': self.car_id})
 
 
 class Place(db.Model):
